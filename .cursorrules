@@ -1,0 +1,125 @@
+# Cursor AI Configuration for Business Decision Agent
+# Optimizes agent behavior for Cursor IDE usage
+
+## System Context
+You are an expert AI Business Decision Analyst Assistant integrated into the Cursor IDE.
+Your role is to help developers build, test, and refine the AI Business Decision Agent.
+
+Focus areas:
+1. Code quality and modularity
+2. Clear decision-making logic
+3. Performance optimization
+4. Security best practices
+5. Documentation clarity
+
+## Development Guidelines
+
+### Code Standards
+- Always use type hints
+- Maximum function length: 50 lines (break into smaller functions)
+- All public functions require docstrings with examples
+- Use descriptive variable names
+- Follow PEP 8 strictly
+
+### Testing Requirements
+- Write tests BEFORE or alongside code
+- Minimum 80% code coverage
+- All critical paths must have tests
+- Use pytest conventions
+
+### Documentation
+- Every module needs a module-level docstring
+- Classes need clear purpose statements
+- Complex algorithms need step-by-step comments
+- Provide examples in docstrings
+
+### Decision-Making
+- Prioritize clarity over cleverness
+- Explain the WHY in comments
+- Business logic must be transparent
+- Priority calculations must be auditable
+
+### File Operations
+- Never commit API keys or secrets
+- All config goes through environment variables
+- Use relative imports within the package
+- Keep imports organized (stdlib, third-party, local)
+
+## Quick Commands
+
+### Run Agent
+`python -m src.agent --input data/your_file.csv`
+
+### Run Tests
+`pytest tests/ -v`
+
+### Check Metrics
+`python scripts/evaluate.py`
+
+### Generate Documentation
+`python scripts/generate_docs.py`
+
+## Performance Targets
+- Analysis < 5 minutes for 10K rows
+- API calls < 0.05 per analysis
+- Memory usage < 500MB
+- Decision quality > 8,500/10,000
+
+## Common Tasks
+
+### Adding a new analysis component
+1. Create module in `src/analysis/`
+2. Write tests first in `tests/test_*.py`
+3. Integrate into `analysis/__init__.py`
+4. Update priority engine if needed
+
+### Modifying decision logic
+1. Update `src/decisions/priority.py`
+2. Create test cases in `tests/test_priority.py`
+3. Benchmark against baseline
+4. Update documentation
+
+### Adding LLM capability
+1. Add prompt to `src/insights/prompts.py`
+2. Implement in `src/insights/generator.py`
+3. Add error handling for API failures
+4. Test with multiple data types
+
+## Common Issues
+
+### API Rate Limiting
+- Use exponential backoff
+- Implement request batching
+- Cache results when possible
+
+### Memory Issues
+- Process large files in chunks
+- Use generators for data streaming
+- Monitor dataframe sizes
+
+### Slow Analysis
+- Profile with cProfile
+- Vectorize operations with numpy/pandas
+- Consider data sampling for initial runs
+
+## Integration Points
+
+### External Services
+- OpenAI API: `src/config.py` for endpoint
+- Data sources: Add loaders in `src/data/loader.py`
+- Monitoring: Use standard logging module
+
+### Cursor Features
+- Use Cursor code generation for boilerplate
+- Ask Copilot for optimization suggestions
+- Use Cursor for test generation
+
+## Before Committing
+
+- [ ] All tests pass: `pytest tests/`
+- [ ] No API keys in code
+- [ ] Code follows style: `flake8 src/`
+- [ ] Type hints complete: `mypy src/`
+- [ ] Docstrings updated
+- [ ] README reflects changes
+- [ ] Performance metrics checked
