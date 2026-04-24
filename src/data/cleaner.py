@@ -85,12 +85,12 @@ class DataCleaner:
             # Impute based on data type
             if df[col].dtype in ["float64", "int64"]:
                 # Use median for numeric
-                df[col].fillna(df[col].median(), inplace=True)
+                df[col] = df[col].fillna(df[col].median())
             else:
                 # Use mode for categorical
                 mode_val = df[col].mode()
                 if len(mode_val) > 0:
-                    df[col].fillna(mode_val[0], inplace=True)
+                    df[col] = df[col].fillna(mode_val[0])
 
             report["missing_values_handled"] += missing_count
             logger.info(f"  • Imputed {missing_count} missing values in {col}")
@@ -101,14 +101,14 @@ class DataCleaner:
     def standardize_formats(df: pd.DataFrame) -> pd.DataFrame:
         """Standardize data formats (dates, strings, numbers)."""
         for col in df.columns:
-            # Try to parse dates
-            if df[col].dtype == "object":
+            # Try to parse dates (only for object/string columns)
+            if df[col].dtype.kind == "O":
                 try:
                     df[col] = pd.to_datetime(df[col])
                     logger.info(f"  • Standardized {col} as datetime")
-                except:
-                    # Try to standardize as string
-                    df[col] = df[col].str.lower().str.strip()
+                except (ValueError, TypeError):
+                    # Standardize as lowercase stripped string
+                    df[col] = df[col].astype(str).str.lower().str.strip()
 
         return df
 
