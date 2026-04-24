@@ -1,7 +1,3 @@
-"""
-Sample e-commerce data for testing the agent.
-30 records with 8 columns.
-"""
 date,customer_id,product_category,revenue,quantity,customer_lifetime_value,days_since_purchase,satisfaction_score
 2026-01-05,C001,Electronics,1200,2,5600,15,4.2
 2026-01-08,C002,Clothing,350,3,2100,18,3.8
