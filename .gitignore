@@ -57,7 +57,7 @@ data/*
 # Output
 output/
 !output/.gitkeep
-*.json
+output/*.json
 results/
 
 # OS
@@ -71,6 +71,13 @@ temp/
 # Metrics
 metrics/*
 !metrics/.gitkeep
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+coverage/
+AGENTS.md
 
 # Secrets
 .env
