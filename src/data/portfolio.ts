@@ -318,6 +318,7 @@ export const certifications: CertificationItem[] = [
     summary:
       "Add confirmed certifications here. View and verification links remain disabled until configured.",
     status: "placeholder",
+    certificatePath: "/certificates/certificate-placeholder.svg",
   },
 ];
 
